@@ -38,10 +38,9 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 #### [[⬆]](#toc) <a name='general'>General Questions:</a>
 
 * What did you learn yesterday/this week?
-
     * 2018-10-18: Simple way to "downgrade" Python 3.7 to 3.6 on my Mac:
     
-        `$ brew switch python 3.6.5`
+    `$ brew switch python 3.6.5`
 
 * Talk about your preferred development/administration environment. (OS,
 Editor, Browsers, Tools etc.)
@@ -65,6 +64,12 @@ Editor, Browsers, Tools etc.)
     (from the vision statement)
     
 * What function does DNS play on a network?
+    * The DNS translates domain names to the numerical IP addresses needed for
+    locating and identifying computer services and devices with the underlying
+    network protocols.
+    * At its core, it translates more readily memorized domain names to the
+    numerical IP addresses needed for locating and identifying computer services
+    and devices with the underlying network protocols.
 
 * What is HTTP?
 * What is an HTTP proxy and how does it work?
