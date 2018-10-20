@@ -38,11 +38,34 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 #### [[⬆]](#toc) <a name='general'>General Questions:</a>
 
 * What did you learn yesterday/this week?
-* Talk about your preferred development/administration environment. (OS, Editor, Browsers, Tools etc.)
+
+    * 2018-10-18: Simple way to "downgrade" Python 3.7 to 3.6 on my Mac:
+    
+        `$ brew switch python 3.6.5`
+
+* Talk about your preferred development/administration environment. (OS,
+Editor, Browsers, Tools etc.)
+
+    * Development environment: Mac wih OS X & Emacs, closely followed by
+        JetBrains IDEs.
+    * Universal tool: Firefox or Crome web browsers. I still use Safari and
+        Internet Explorer for specific purposes and testing.
+
 * Tell me about the last major Linux project you finished.
-* Tell me about the biggest mistake you've made in [some recent time period] and how you would do it differently today. What did you learn from this experience?
+    * TODO
+    
+* Tell me about the biggest mistake you've made in [some recent time period] and
+    how you would do it differently today. What did you learn from this experience?
+    * TODO
+    
 * Why we must choose you?
+    * Because I'm eager to apply more of my knowledge to help Facebook users to
+    stay connected with friends and family, to discover what's going on in the
+    world, and to share and express what matters to them.
+    (from the vision statement)
+    
 * What function does DNS play on a network?
+
 * What is HTTP?
 * What is an HTTP proxy and how does it work?
 * Describe briefly how HTTPS works.
