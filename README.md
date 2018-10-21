@@ -70,9 +70,20 @@ Editor, Browsers, Tools etc.)
     * At its core, it translates more readily memorized domain names to the
     numerical IP addresses needed for locating and identifying computer services
     and devices with the underlying network protocols.
+    * TODO: Elaborate on the advanced features.
 
 * What is HTTP?
+    * The Hypertext Transfer Protocol (HTTP) is an application protocol for
+        distributed, collaborative, hypermedia information systems. HTTP is the
+        foundation of data communication for the World Wide Web.
+        
 * What is an HTTP proxy and how does it work?
+    * A proxy server is a server (a computer system or an application) that acts
+        as an intermediary for requests from clients seeking resources from
+        other servers. An HTTP proxy is Web proxy and uses the HTTP protocol. HTTP
+        proxies can be used for multiple purposes including availability, reliability,
+        anonymity, caching and more.
+        
 * Describe briefly how HTTPS works.
 * What is SMTP? Give the basic scenario of how a mail message is delivered via SMTP.
 * What is RAID? What is RAID0, RAID1, RAID5, RAID10?
