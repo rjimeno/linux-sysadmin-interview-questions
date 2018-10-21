@@ -85,7 +85,50 @@ Editor, Browsers, Tools etc.)
         anonymity, caching and more.
         
 * Describe briefly how HTTPS works.
+    * HTTPS encapsulates HTTP traffic into an SSL/TLS layer.
+    
 * What is SMTP? Give the basic scenario of how a mail message is delivered via SMTP.
+    * A Simple Mail Transfer Protocol (SMTP) trivial example on how a message is
+        delivered follows:
+        
+        1c. A SMTP client software resolves the name of the SMTP server it needs
+            (based on DNS information) and establishes a TCP connection to port
+            number 25.
+            
+        1s. The server shows it accepted the connection with a code 220 answer.
+            
+        2c. The client sends 'HELO ' followed by the server's domain name.
+        
+        2s. The server replies with a 250 "pleased to meet you" message, possibly
+            describing the features it accepts.
+            
+        3c. The client sends 'MAIL FROM: ' followed by the email address of the
+            sender.
+            
+        3s. The server normally replies with a 250 MAIL ok message.
+        
+        4c. The client sends 'RCPT TO: ' followed by the email address of the
+            recipient.
+            
+        4s. The server sends a "250 ok" possibly repeating the recipient's
+            email address as indicated above.
+            
+        5c. The client sends the 'DATA' command.
+        
+        5s. The server replies with '354' message indicating to proceed.
+        
+        6c. The client sends one or more lines of text that constitutes the
+            email being sent. To indicate the end of the email data, the client
+            sends a dot ('.') in a single line by itself.
+            
+        6s. The server replies with a 250 "message received" or "accepted" or
+        "queued" for delivery.
+        
+        7c. The client sends the 'QUIT' command.
+        
+        7s. The server responds with a 221 "bye" message.
+        
+
 * What is RAID? What is RAID0, RAID1, RAID5, RAID10?
 * What is a level 0 backup? What is an incremental backup?
 * Describe the general file system hierarchy of a Linux system.
