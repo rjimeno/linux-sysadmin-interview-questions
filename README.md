@@ -229,15 +229,24 @@ Editor, Browsers, Tools etc.)
 * Which command will show you free/used memory? Does free memory exist on Linux?
 
   `free`
-  Well, it does but it is called 'available' instead of 'free'. The core point here is
-  that Linux will try to take advantage of all the installed memory and, after running for
-  a while, the memory that is not used by processes will be used for buffers and cacheing.
-  Still, all that memory can and will be made available immediately upon request; for example,
-  when the kernel wants to read a large program.
+  
+  It does but it is called 'available' instead of 'free'. The core point here is
+  that Linux will try to take advantage of all the installed memory. The memory
+  that is not used by processes will be used for buffering and caches, but will
+  immediately be made available if needed by for anything else, like running a
+  process, for example.
   
   
-* How to search for the string "my konfu is the best" in files of a directory recursively?
+* How to search for the string "my konfu is the best" in files of a directory
+    recursively?
+    
+    `grep -r "my konfu is the best" directory_name`
+    
+    
 * How to connect to a remote server or what is SSH?
+
+    SSH is 
+
 * How to get all environment variables and how can you use them?
 * I get "command not found" when I run ```ifconfig -a```. What can be wrong?
 * What happens if I type TAB-TAB?
