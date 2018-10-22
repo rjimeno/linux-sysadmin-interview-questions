@@ -275,6 +275,14 @@ Editor, Browsers, Tools etc.)
 
 
 * I get "command not found" when I run ```ifconfig -a```. What can be wrong?
+
+    On recent Linux distributions (like CentOS 7, for example), the net-tools package
+    is not required and so, the command `ifconfig` may not be available. That is not
+    necessarily wrong because the `ip` command can perform the same functionality.
+    
+    The specific functionality of `ifconfig -a` is the same (although not completely
+    identical) as `ip link show`.
+
 * What happens if I type TAB-TAB?
 * What command will show the available disk space on the Unix/Linux system?
 * What commands do you know that can be used to check DNS records?
