@@ -169,6 +169,44 @@ Editor, Browsers, Tools etc.)
         either incremental or differential set of backups.
 
 * Describe the general file system hierarchy of a Linux system.
+  * /bin/ = Essential User Command Binaries.
+  * /boot/ = Static files required to boot the system, for example, the Linux kernel.
+    These files are essential for the system to boot properly. 
+  * /dev/ = Device nodes that represent devices attached to the system or virtual
+    devices provided by the kernel. 
+  * /etc/ = configuration files that are local to the machine (i.e. host-specific). It
+    should not contain any binariesHost specific system configuration.
+  * /home/ = Data that only pertains to a specific user.
+  * /media/ = Automatically detected removable media.
+  * /mnt/ = Temporarily mounted file systems, such as NFS file system mounts.
+  * /opt/ = Software and add-on applications packages that are not part of the
+    default installation.
+  * /proc/ = Special files that either extract information from the kernel or send
+    information to it.
+  * /sbin/ = System Binaries.
+  * /srv/ = Site-specific data served. This directory gives users the location of data
+    files for a particular service, such as FTP, WWW, or CVS. 
+  * /tmp/ = Temporary Files.
+  * /usr/ = Files that can be shared across multiple machines. Often a partition that
+    is mounted read-only. At a minimum, /usr/ should contain the following subdirectories:
+    * /usr/bin/ = Usef for binaries.
+    * /usr/etc/ = System-wide configuration files.
+    * /usr/games/ = Games?
+    * /usr/include/ = C header files.
+    * /usr/kerberos/ = Kerberos-related binaries and files.
+    * /usr/lib/ = Object files and libraries that are not designed to be directly
+      utilized by shell scripts or users.
+    * /usr/libexec/ = Small helper programs called by other programs.
+    * /usr/sbin/ = All system administration binaries, including those essential for
+      booting, restoring, recovering, or repairing the system. They require root
+      privileges to use.
+    * /usr/share/ = Store files that are not architecture-specific.
+    * /usr/src/ = Source code.
+    * /usr/tmp/ = Is linked to /var/tmp/ and stores temporary files.
+    * /usr/local/ = Should be used to store software that should remain safe from
+      system software upgrades.
+  * /var/ = For variable data. Any program that write log files or need spool or
+    lock directories should write them to the /var/ directory
 
 
 #### [[⬆]](#toc) <a name='simple'>Simple Linux Questions:</a>
