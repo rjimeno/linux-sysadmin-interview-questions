@@ -245,9 +245,35 @@ Editor, Browsers, Tools etc.)
     
 * How to connect to a remote server or what is SSH?
 
-    SSH is 
+    Secure Shell (SSH) is a cryptographic network protocol for operating network
+    services securely over an unsecured network.
+    
+    A SSH client process can connect to a SSH server running in a remote machine.
+    To open an interactive session the client software would be invoqued as:
+    
+    `ssh user12@system.example.com`
+    
+    where 'system.example.com' represents the name of the remote server and
+    'user12' represents the name of the user that will be used to for log-in.
+    
 
 * How to get all environment variables and how can you use them?
+
+    'set' should display all environment variables but it is probably beeter to
+    use 'printenv' or 'env' instead, as only environment variables will be
+    displayed.
+    
+    Environment variables can be used by writing and reading values to and from
+    them as follows:
+    
+    `V=$(date)` # The variable V now holds the date-time at which it was assigned`
+    
+    The command above shows a way to set the variable V. The following one shows
+    a way to read the value in V to display it:
+    
+    `echo $V # Displays the date and time when V was set using $(date)`
+
+
 * I get "command not found" when I run ```ifconfig -a```. What can be wrong?
 * What happens if I type TAB-TAB?
 * What command will show the available disk space on the Unix/Linux system?
