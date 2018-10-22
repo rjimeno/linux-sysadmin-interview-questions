@@ -212,9 +212,30 @@ Editor, Browsers, Tools etc.)
 #### [[⬆]](#toc) <a name='simple'>Simple Linux Questions:</a>
 
 * What is the name and the UID of the administrator user?
+
+  root, 0.
+  
+  
 * How to list all files, including hidden ones, in a directory?
+
+  `ls -a`
+  
+  
 * What is the Unix/Linux command to remove a directory and its contents?
+
+  `rmdir`
+  
+  
 * Which command will show you free/used memory? Does free memory exist on Linux?
+
+  `free`
+  Well, it does but it is called 'available' instead of 'free'. The core point here is
+  that Linux will try to take advantage of all the installed memory and, after running for
+  a while, the memory that is not used by processes will be used for buffers and cacheing.
+  Still, all that memory can and will be made available immediately upon request; for example,
+  when the kernel wants to read a large program.
+  
+  
 * How to search for the string "my konfu is the best" in files of a directory recursively?
 * How to connect to a remote server or what is SSH?
 * How to get all environment variables and how can you use them?
