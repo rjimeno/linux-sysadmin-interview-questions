@@ -320,14 +320,67 @@ Editor, Browsers, Tools etc.)
 
     That the directory's owner can read (as in `ls`), write (as in create, rename,
     and delete) files and attributes of the directory and enter (as in `cd`) the
-    directory. Other users have no permissions whatsoever.
+    directory and access files and directories inside. Other users have no
+    permissions whatsoever.
     
 
 * How to add a new system user without login permissions?
+
+    `useradd -s /sbin/nologin <username> -uid <uid>`
+    
+    In the command line above, `<username>` represents the username that the new
+    system user will have while `<uid>` is a number between SYS_UID_MIN and
+    SYS_UID_MAX that will identify this new user uniquely in this system. The
+    values for SYS_UID_MIN and SYS_UID_MAX are often 200 and 999. They should be
+    defined in the file `/etc/login.defs` and are often defined
+    
+
 * How to add/remove a group from a user?
+
+    `useradd <username> -G <gid2>` can be used to create a new user with that will,
+    additionally, belong to the group with id `<gid2>`. If the user already
+    exists, its settings can be modified to add the group `<gid1>` from it as
+    follows:
+    
+    `usermod -a -G <gid1> <username>`
+    
+    Finally if the user `<username>` already belongs to groups `<gid1>,<gid2>`,
+    usrmod can be used to remove one or more of the additional groups as follows:
+    
+    `usermod -G <gid2> <username>`
+    
+    Where `<username>` will now belong only to the `<gid2>` group.
+
+    
 * What is a bash alias?
+
+    `alias` is a Bash command that enables a replacement of a word by another
+    string. It is mainly used to abbreviate typing. For example, the frequent
+    command `git commit -m` can be shortened to something much shorter like `gsm`
+    typing the following alias command:
+    
+    `alias gsm='git commit -m'`
+    
+    Users of DOS and the Windows operating system often alias the string `copy`
+    to `cp` when using Unix-like operating system.
+    
+    
 * How do you set the mail address of the root/a user?
+
+    By editing root's entry in the `/etc/aliases` file and point it to the email
+    address that will be used for root's email. Similarly, other local users can
+    have their email forwarded to other email addresses by editing their entries
+    on said file. After the file is changed, the program `newaliases` must be
+    run. There are other ways to achieve a similar result like, for example, by
+    using a `~/.forward` file.
+    
+    
 * What does CTRL-c do?
+
+    It causes the SIGINT signal to be sent to a process by its controlling
+    terminal when a user wishes to interrupt its execution. 
+    
+    
 * What is in /etc/services?
 * How to redirect STDOUT and STDERR in bash? (> /dev/null 2>&1)
 * What is the difference between UNIX and Linux.
