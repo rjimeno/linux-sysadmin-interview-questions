@@ -382,7 +382,17 @@ Editor, Browsers, Tools etc.)
     
     
 * What is in /etc/services?
+
+    A list of services including their names, the port and protocol
+    combination they use additional names or aliases and comments.
+    Effectively, the /etc/services is a database used by the
+    C library routine getservbyname() to find the port number and
+    protocol (TCP or UDP) used by a service given its name.
+    
+    
 * How to redirect STDOUT and STDERR in bash? (> /dev/null 2>&1)
+
+
 * What is the difference between UNIX and Linux.
 * What is the difference between Telnet and SSH?
 * Explain the three load averages and what do they indicate. What command can be used to view the load averages?
