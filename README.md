@@ -240,7 +240,7 @@ Editor, Browsers, Tools etc.)
 * How to search for the string "my konfu is the best" in files of a directory
     recursively?
     
-    `grep -r "my konfu is the best" directory_name`
+    `grep -r "my konfu is the best" <directory_name>`
     
     
 * How to connect to a remote server or what is SSH?
@@ -284,12 +284,45 @@ Editor, Browsers, Tools etc.)
     identical) as `ip link show`.
 
 * What happens if I type TAB-TAB?
+
+    The Bash shell will attempt to complete whichever command you are typing by
+    "guessing" based on context.
+    
+    
 * What command will show the available disk space on the Unix/Linux system?
+
+    `df`
+    
+
 * What commands do you know that can be used to check DNS records?
+
+    `dig` & `nslookup`
+    
+    
 * What Unix/Linux commands will alter a files ownership, files permissions?
+
+    `chown` & `chmod`
+    
+    
 * What does ```chmod +x FILENAME``` do?
+
+    Allows the file named FILENAME to be executed as a command, script or program.
+    
+
 * What does the permission 0750 on a file mean?
+
+    The file's owner can read, write and execute the file, while the users that belog
+    in the file's group can read and execute (thus, not write) the said file. Other
+    users have no permissions at all on this file.
+    
+    
 * What does the permission 0750 on a directory mean?
+
+    That the directory's owner can read (as in `ls`), write (as in create, rename,
+    and delete) files and attributes of the directory and enter (as in `cd`) the
+    directory. Other users have no permissions whatsoever.
+    
+
 * How to add a new system user without login permissions?
 * How to add/remove a group from a user?
 * What is a bash alias?
