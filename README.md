@@ -460,9 +460,51 @@ Editor, Browsers, Tools etc.)
 
 
 * Can you name a lower-case letter that is not a valid option for GNU ```ls```?
+
+    * Only e, j, y & z. In at least one BSD (MacOS), e is used to display 
+      access control lists, but the others also absent there. 
+    
+
 * What is a Linux kernel module?
-* Walk me through the steps in booting into single user mode to troubleshoot a problem.
-* Walk me through the steps you'd take to troubleshoot a 404 error on a web application you administer.
+
+    Is a piece of code that extends the functionality of kernel without the 
+    need to rebuild nor reboot the system. Loadable kernel modules can be 
+    loaded-to and unloaded-from the kernel as needed. In Linux many device 
+    drivers are modules. Because of that, device drivers of devices that are 
+    not used, can be removed (or never loaded) without rebooting.
+    
+
+* Walk me through the steps in booting into single user mode to troubleshoot a
+  problem.
+
+    * On a RHEL7 that is responsive: `systemctl isolate runlevel1.target`.
+    
+    * On some other Linux: `telinit 1` (or `init 1` or `runlevel 1`).
+    
+    * On a non-responsive (halted or crashed) system:
+    
+        * Start rebooting and when the system starts the boot loader, type 
+        something to stop the process for continuing. Edit the kernel line 
+        (the one that starts with 'kernel') and append ' single ' to it. Then
+        send a Ctrl-X to continue the boot process to runlevel 1.
+         
+    * On a RHEL7 that is non-responsive:
+    
+        * Do similarly the case above but instead of editing the line that 
+        starts with kernel, edit the line that starts with 'linux16'. Do not 
+        append ' single '. Instead, replace the ' ro ' in that line for ' rw 
+        init=/sysroot/sh ' and send Ctrl-X to continue rebooting to rescue mode.
+        
+        * Once the boot process stops and offers a prompt, issue the command 
+        `chroot /sysroot/` to mount get the root file system setup as it 
+        usually does in runlevel 1 or single user mode.
+
+    
+* Walk me through the steps you'd take to troubleshoot a 404 error on a web 
+application you administer.
+
+
+
 
 #### [[⬆]](#toc) <a name='medium'>Medium Linux Questions:</a>
 
