@@ -53,11 +53,14 @@ Editor, Browsers, Tools etc.)
 
 
 * Tell me about the last major Linux project you finished.
+
     * TODO
 
     
 * Tell me about the biggest mistake you've made in [some recent time period] and
-    how you would do it differently today. What did you learn from this experience?
+    how you would do it differently today. What did you learn from this
+    experience?
+    
     * TODO
 
     
@@ -85,18 +88,21 @@ Editor, Browsers, Tools etc.)
 
         
 * What is an HTTP proxy and how does it work?
+
     * A proxy server is a server (a computer system or an application) that acts
         as an intermediary for requests from clients seeking resources from
-        other servers. An HTTP proxy is Web proxy and uses the HTTP protocol. HTTP
-        proxies can be used for multiple purposes including availability, reliability,
-        anonymity, caching and more.
+        other servers. An HTTP proxy is Web proxy and uses the HTTP protocol.
+        HTTP proxies can be used for multiple purposes including availability,
+        reliability, anonymity, caching and more.
 
         
 * Describe briefly how HTTPS works.
     * HTTPS encapsulates HTTP traffic into an SSL/TLS layer.
 
     
-* What is SMTP? Give the basic scenario of how a mail message is delivered via SMTP.
+* What is SMTP? Give the basic scenario of how a mail message is delivered via
+    SMTP.
+
     * A Simple Mail Transfer Protocol (SMTP) trivial example on how a message is
         delivered follows:
         
@@ -108,8 +114,8 @@ Editor, Browsers, Tools etc.)
             
         2c. The client sends 'HELO ' followed by the server's domain name.
         
-        2s. The server replies with a 250 "pleased to meet you" message, possibly
-            describing the features it accepts.
+        2s. The server replies with a 250 "pleased to meet you" message,
+            possibly describing the features it accepts.
             
         3c. The client sends 'MAIL FROM: ' followed by the email address of the
             sender.
@@ -139,25 +145,31 @@ Editor, Browsers, Tools etc.)
 
 
 * What is RAID? What is RAID0, RAID1, RAID5, RAID10?
-    * Is an array of (inexpensive or somewhat independent) disks working together
-        to benefit from the cooperation. Some examples follow:
+
+    * Is an array of (inexpensive or somewhat independent) disks working
+        together to benefit from the cooperation. Some examples follow:
+        
         * RAID0 allows for 2 or more disks join as a stripe set and behave as a
             stripe volume. At least two benefits can be obtained from striping:
             - Volumes can be larger than non-RAID volumes and,
             - Volumes can be faster thant non-RAID because data is split evenly
                 between all participating disks.
+                
         * RAID1 allows for multiple copies of a disk. Two are the key benefits:
-            - Reliability as if disks in the array fail, the array keeps operating
-                as long as there is still at least one disks that works.
+            - Reliability as if disks in the array fail, the array keeps
+                operating as long as there is still at least one disks that 
+                works.
             - Performance is improved while reading as the data can be fetched
                 from all the working copies.
+                
         * RAID10 is also called RAID 1+0 and is a "nested" array that "mirrors"
-            RAID1 stripes. A simple example would be mirrored pair of 3-disk stripes.
-            The performance could be up to 6-time faster read operations and 3-time
-            faster write operations that can tolerate the failure of 1, 2 or 3 disk
-            as long as all the failures happen on a single stripe. Note that a for
-            RAID10 to keep operating, at least one stripe must remain completely
-            intact.
+            RAID1 stripes. A simple example would be mirrored pair of 3-disk
+            stripes. The performance could be up to 6-time faster read 
+            operations and 3-time faster write operations that can tolerate 
+            the failure of 1, 2 or 3 disk as long as all the failures happen 
+            on a single stripe. Note that a for RAID10 to keep operating, at 
+            least one stripe must remain completely intact.
+            
         * RAID5 is a standard (i.e. non-nested) array that keeps multiple copies
             of parity bits that permit the complete recovery of one of the disks
             in the array. RAID5 has low write performance compared to RAID0 &
@@ -168,45 +180,50 @@ Editor, Browsers, Tools etc.)
     * A level 0 backup is a "full backup". It is the first backup in a set of
         either incremental or differential set of backups.
 
+
 * Describe the general file system hierarchy of a Linux system.
   * /bin/ = Essential User Command Binaries.
-  * /boot/ = Static files required to boot the system, for example, the Linux kernel.
+  * /boot/ = Static files required to boot the system, for example, the Linux
+    kernel.
     These files are essential for the system to boot properly. 
-  * /dev/ = Device nodes that represent devices attached to the system or virtual
+  * /dev/ = Device nodes that represent devices attached to the system or
+    virtual
     devices provided by the kernel. 
-  * /etc/ = configuration files that are local to the machine (i.e. host-specific). It
-    should not contain any binariesHost specific system configuration.
+  * /etc/ = configuration files that are local to the machine (i.e.
+    host-specific). It should not contain any binariesHost specific system 
+    configuration.
   * /home/ = Data that only pertains to a specific user.
   * /media/ = Automatically detected removable media.
   * /mnt/ = Temporarily mounted file systems, such as NFS file system mounts.
   * /opt/ = Software and add-on applications packages that are not part of the
     default installation.
-  * /proc/ = Special files that either extract information from the kernel or send
-    information to it.
+  * /proc/ = Special files that either extract information from the kernel or
+    send information to it.
   * /sbin/ = System Binaries.
-  * /srv/ = Site-specific data served. This directory gives users the location of data
-    files for a particular service, such as FTP, WWW, or CVS. 
+  * /srv/ = Site-specific data served. This directory gives users the location
+    of data files for a particular service, such as FTP, WWW, or CVS. 
   * /tmp/ = Temporary Files.
-  * /usr/ = Files that can be shared across multiple machines. Often a partition that
-    is mounted read-only. At a minimum, /usr/ should contain the following subdirectories:
+  * /usr/ = Files that can be shared across multiple machines. Often a 
+    partition that is mounted read-only. At a minimum, /usr/ should contain 
+    the following subdirectories:
     * /usr/bin/ = Usef for binaries.
     * /usr/etc/ = System-wide configuration files.
     * /usr/games/ = Games?
     * /usr/include/ = C header files.
     * /usr/kerberos/ = Kerberos-related binaries and files.
-    * /usr/lib/ = Object files and libraries that are not designed to be directly
-      utilized by shell scripts or users.
+    * /usr/lib/ = Object files and libraries that are not designed to be
+      directly utilized by shell scripts or users.
     * /usr/libexec/ = Small helper programs called by other programs.
-    * /usr/sbin/ = All system administration binaries, including those essential for
-      booting, restoring, recovering, or repairing the system. They require root
-      privileges to use.
+    * /usr/sbin/ = All system administration binaries, including those
+      essential for booting, restoring, recovering, or repairing the system. 
+      they require root privileges to use.
     * /usr/share/ = Store files that are not architecture-specific.
     * /usr/src/ = Source code.
     * /usr/tmp/ = Is linked to /var/tmp/ and stores temporary files.
-    * /usr/local/ = Should be used to store software that should remain safe from
-      system software upgrades.
-  * /var/ = For variable data. Any program that write log files or need spool or
-    lock directories should write them to the /var/ directory
+    * /usr/local/ = Should be used to store software that should remain
+      safe from system software upgrades.
+  * /var/ = For variable data. Any program that write log files or need
+    spool or lock directories should write them to the /var/ directory
 
 
 #### [[⬆]](#toc) <a name='simple'>Simple Linux Questions:</a>
@@ -282,6 +299,7 @@ Editor, Browsers, Tools etc.)
     
     The specific functionality of `ifconfig -a` is the same (although not completely
     identical) as `ip link show`.
+
 
 * What happens if I type TAB-TAB?
 
@@ -394,7 +412,17 @@ Editor, Browsers, Tools etc.)
 
 
 * What is the difference between UNIX and Linux.
+
+    UNIX is a trademark that designates an operating system that
+    certifiably adheres to the Singe UNIX Specification. Linux is
+    the kernel of an operating system that behaves in a manner
+    similar to a Unix system although does not certifiably conforms
+    with the Single UNIX Specification.
+    
+    
 * What is the difference between Telnet and SSH?
+
+
 * Explain the three load averages and what do they indicate. What command can be used to view the load averages?
 * Can you name a lower-case letter that is not a valid option for GNU ```ls```?
 * What is a Linux kernel module?
