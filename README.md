@@ -437,6 +437,12 @@ Editor, Browsers, Tools etc.)
     
 * What is the difference between Telnet and SSH?
 
+    * Simply put, both can be used to establish an interactive shell session 
+    to a remote server. The key difference is that Telnet sends and receives 
+    all its information in clear while, in contrast, the ssh client initiates
+    by establishing secured communication with the server. In that way no 
+    information is sent in clear. 
+
 
 * Explain the three load averages and what do they indicate. What command can be used to view the load averages?
 * Can you name a lower-case letter that is not a valid option for GNU ```ls```?
