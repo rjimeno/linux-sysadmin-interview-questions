@@ -410,6 +410,21 @@ Editor, Browsers, Tools etc.)
     
 * How to redirect STDOUT and STDERR in bash? (> /dev/null 2>&1)
 
+    In Bash's command line it is possible to redirect STDOUT to a file 
+    named `output_file`, using `1> output_file` (or `> output_file` as the 
+    number 1 that indicated STDOUT is optional). Similarly, `2> error_file` 
+    redirects STDERR to the file `error_file`. Frequently, it is useful to 
+    redirect STDERR not to a file but to STDOUT instead. To do that, `$1` can
+     be used equivalently to STDOUT and, in that way, the redirection `2>&1` 
+     will send STDERR to STDOUT.
+     
+     It is worth mentioning here that sometimes command or script should 
+     produce absolutely no output to either STDOUT nor STDERR. One effective 
+     way to achieve that is to follow the command with `> /dev/null 2>&1` as 
+     that expression will send STDOUT to `/dev/null` and STDERR to STDOUT, 
+     achieving in that way a completely quiet operation.
+     
+
 
 * What is the difference between UNIX and Linux.
 
