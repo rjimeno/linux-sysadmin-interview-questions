@@ -444,7 +444,14 @@ Editor, Browsers, Tools etc.)
     information is sent in clear. 
 
 
-* Explain the three load averages and what do they indicate. What command can be used to view the load averages?
+* Explain the three load averages and what do they indicate. What command can
+  be used to view the load averages?
+  
+  * The `uptime` command (as well as others like `w` and `top`) can be used to
+    view the load averages. They represent the average load calculated for the
+    last 1, 5 & 15 minutes. In a system with multiple CPUs, TODO
+
+
 * Can you name a lower-case letter that is not a valid option for GNU ```ls```?
 * What is a Linux kernel module?
 * Walk me through the steps in booting into single user mode to troubleshoot a problem.
