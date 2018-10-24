@@ -449,7 +449,14 @@ Editor, Browsers, Tools etc.)
   
   * The `uptime` command (as well as others like `w` and `top`) can be used to
     view the load averages. They represent the average load calculated for the
-    last 1, 5 & 15 minutes. In a system with multiple CPUs, TODO
+    last 1, 5 & 15 minutes.
+     
+    The load (more accurately System Load or CPU Load) indicates system
+    utilization and represents the number of processes in the running or
+    runnable (or uninterruptible sleep, in the case of Linux) state at a given
+    time. Observe that a 1-core CPU system load of 1 represents 100% utilization
+    while the same load on a 4-core CPU system load represents only 25%
+    utilization.
 
 
 * Can you name a lower-case letter that is not a valid option for GNU ```ls```?
