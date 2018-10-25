@@ -414,7 +414,7 @@ Editor, Browsers, Tools etc.)
     named `output_file`, using `1> output_file` (or `> output_file` as the 
     number 1 that indicated STDOUT is optional). Similarly, `2> error_file` 
     redirects STDERR to the file `error_file`. Frequently, it is useful to 
-    redirect STDERR not to a file but to STDOUT instead. To do that, `$1` can
+    redirect STDERR not to a file but to STDOUT instead. To do that, `&1` can
      be used equivalently to STDOUT and, in that way, the redirection `2>&1` 
      will send STDERR to STDOUT.
      
@@ -609,15 +609,100 @@ application you administer.
  
  
 * What does an ```&``` after a command do?
+
+    * It executes the command "in the background", which means the shell does
+      not wait for the command to finish and instead it executes it in a
+      separate shell (using 0 as its return status). It is useful when we can
+      safely ignore the return status of the command and can benefit from not
+      having to wait for the command to finish execution and continue typing new
+      commands.
+    
+    
 * What does ```& disown``` after a command do?
+
+    * Removes a background process from the shell's job control while leaving it
+      connected to the terminal. It is useful when we want to prevent the shell
+      from sending the HUP signal (SIGHUP) to the command.q
+
+
 * What is a packet filter and how does it work?
+
+    * A packet filter is a software tool that helps at controlling access to 
+    a computer network. It works by analyzing the TCP/IP information on 
+    packets requesting pass-through and permitting, or not, their flow. 
+
+
 * What is Virtual Memory?
+
+    * Virtual memory is a memory management capability of an OS that allows a
+      computer to compensate for physical memory shortages by temporarily
+      transferring data from random access memory to persistent storage.
+
+
 * What is swap and what is it used for?
+
+    * To swap is the process of writing memory (that is RAM) pages to persistent
+     storage and reading data from into memory. Swapping requires swap space 
+     in the form of either a swap file or a swap partition (or volume).
+
+
 * What is an A record, an NS record, a PTR record, a CNAME record, an MX record?
+
+    * An A record maps a FQDN to one IP addresses.
+    
+    * PTR records are the "complement" of A records in the sense that they 
+    map IP addresses to FQDN names. They have the numbers in the IP address 
+    reversed and appended with in-addr.arpa. Email servers often reject email
+    from sources with unmatched PTR to A records.
+    
+    * CNAME records associate additional names to canonical names 
+    effectively creating aliases.
+    
+    * An MX record specifies a mail server responsible for accepting email 
+    messages on behalf oa a recipient's domain along with a "priority" when 
+    redundant servers are available.
+    
+
 * Are there any other RRs and what are they used for?
+
+    * SOA (Start Of Authority) records specify authoritative information on a
+     DNS zone.
+
+    * NS records indicate which name server(s) are authoritative for the zone.
+    
+    * TXT records were created for human readable text (like comments, for 
+    example) but nowadays are used also for multiple purposes including 
+    "machine-readable" text.
+    
+    * SRV are generalized service location records that can be used for newly
+     created services.
+     
+
 * What is a Split-Horizon DNS?
+
+    * Is the facility of a DNS implementation to provide different sets of DNS
+      information depending on information provided by the client (and usually
+      being the source address of the DNS request) For example, By using
+      split-horizon DNS the same name can lead to either the private IP address
+      or the public one, depending on which client sends the query.
+    
+
 * What is the sticky bit?
+
+    * Is metadata (from regular Unix permissions) that indicates a directory 
+    should be given special treatment as follows:
+    
+    A directory with the sticky bit set forbids users from deleting or 
+    renaming a file owned by other user.
+    
+
 * What does the immutable bit do to a file?
+
+    * It prevents a file from being linked (that is, hard-linked, not 
+    soft-linked), renamed, deleted or modified in any way, except for root. 
+    It also helps root from accidentally doing so.
+    
+    
 * What is the difference between hardlinks and symlinks? What happens when you remove the source to a symlink/hardlink?
 * What is an inode and what fields are stored in an inode?
 * How to force/trigger a file system check on next reboot?
