@@ -503,22 +503,111 @@ Editor, Browsers, Tools etc.)
 * Walk me through the steps you'd take to troubleshoot a 404 error on a web 
 application you administer.
 
-
+    * I'd try to obtain the URL(s) that is(are) triggering the error. That's 
+    a good starting poing because, from there I can try to identify if there 
+    was an obvious typo in the URL, etc. If that's not the problem ...
+    
+    * I'd try to identify the time at which the 404 happened and check the 
+    errors.log file to try spotting the problem or problem's there. Maybe 
+    just by glancing a the 404s there I can see a pattern in the problem.
+    
+    * After that, I'd check httpd.conf and try to "cross reference" the
+    error(s) with the configuration. For example, maybe I can identify that 
+    all the 404 errors correspond to a single branch (or even file) in the 
+    file system hierarchy. If that is the case, the problem could be related 
+    to a recent change in the permissions of directories or files. This kind 
+    of problem may happen not only after an update on a web site, but also 
+    after recovering a backup.
+    
+    * If the problem does not seem to be associated with files, maybe the 
+    problem is related to DNS or IP addresses in virtual host configurations.
+    For example, maybe the errors come from a web site with a domain name 
+    that expired recently. The way to solve that problem may be completely 
+    outside of the web server scope and be dealt with the person responsible 
+    of timely paying for domain names.
 
 
 #### [[⬆]](#toc) <a name='medium'>Medium Linux Questions:</a>
 
 * What do the following commands do and how would you use them?
  * ```tee```
+ 
+    * Sends the standard input to standard output *AND* a file. Useful to be 
+    able to see the output of a script as it happens while keeping a 
+    persistent copy of everything at the same time.
+ 
+ 
  * ```awk```
+ 
+    * Is an interpreted programming language designed for text processing and
+     typically used as a data extraction and reporting tool. I'd use it to 
+     process column-oriented plain-text files to create reports with 
+     consolidated data.
+    
+   
  * ```tr```
+ 
+    * Translates or transliterates its input based on a couple of strings 
+    that help match an ordered set of characters to another one. Id use it to
+     "clean" data files that contain some information tha is not relevant for
+      analysis and that could make the processing of the input data more 
+      difficult.
+    
+    
  * ```cut```
+ 
+    * Selects sub-sections of line-oriented data using column-oriented 
+    information to process input files and produce relevant information. In a
+     way `cut` is "just" a filter, but its capacity to sub-select data in
+    flexible ways makes it a great tool.
+ 
+ 
  * ```tac```
+ 
+    * Concatenates the content of the files provided as arguments, and 
+    reversed the output. It is similar to the cat command, but displays the 
+    output in the opposite order. It is useful to review and see log files 
+    showing the oldest entries first instead of last (as cat would do).
+ 
+ 
  * ```curl```
+ 
+    * Curl is a tool to transfer data from or to a remote networked server 
+    using protocols like FTP and HTTP. It is useful for testing APIs over 
+    HTTP and much, much, much more.
+    
+    
  * ```wget```
+ 
+    * Wget is a utility for non-interactive download of files from the Web 
+    using FTP, HTTP or HTTPS. I'd use it to copy static web sites to my 
+    laptop so I can review the downloaded information while offline and using
+    software tools that would not normally be available for the web.
+ 
+ 
  * ```watch```
+ 
+    * Executes commands at specified intervals. I'd use it to monitor the 
+    operation of other programs using, for example, ps as follows:
+    
+    `watch "ps -e"`
+    
+    A strong point for using watch is the way it keeps information on screen.
+    
+ 
+ 
  * ```head```
+
+    * Shows the top few lines of a data file. Can be used to see the most 
+    recent entries in a log file
+    
+    
  * ```tail```
+ 
+    * Shows the bottom few lines of a data file. Can be used to see the oldest
+    entries in a log file.
+ 
+ 
 * What does an ```&``` after a command do?
 * What does ```& disown``` after a command do?
 * What is a packet filter and how does it work?
