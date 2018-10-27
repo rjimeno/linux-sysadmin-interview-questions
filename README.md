@@ -703,9 +703,57 @@ application you administer.
     It also helps root from accidentally doing so.
     
     
-* What is the difference between hardlinks and symlinks? What happens when you remove the source to a symlink/hardlink?
+* What is the difference between hardlinks and symlinks? What happens when 
+you remove the source to a symlink/hardlink?
+
+    * Files contain data and have associated metadata, like their names, for 
+    example. Links are additional names for files that facilitate access to 
+    to files using different names. Links come in two types: Hard links and 
+    symbolic links. Symbolic links are implemented as independent or 
+    additional file that contain the name of the linked file along with 
+    metadata indicating that the file has type "symlink" (as oposed of 
+    directories or devices). Note that symbolic links can link files in 
+    separate file systems. Note too that if the linked file is deleted, the 
+    symbolic link is effectively linked to nothing. Hard links are 
+    implemented differently and do not suffer from the formerly described 
+    deletion problem: if one of the names linking to the file is deleted, the
+     link still points to the file. On the other hand hard links can't 
+     associate files in separate file systems: both must belong in the same 
+     file system.
+
 * What is an inode and what fields are stored in an inode?
+
+    * An inode is a data structure of Unix-like file systems that contains 
+    metadata and pointers to storage blocks (containing data) and other 
+    inodes. It is safe to think of inodes as smart building blocks of files.
+    
+    * Inodes contain fields like the following:
+        * Device ID identifies uniquely the device that contains the file 
+        represented with this inode.
+        * File mode which determines the file type and the way in which the 
+        file can be accessed by the owner, its group & others.
+        * A (hard) link count.
+        * UID & GID for this file.
+        * Device ID of the file if this file represents a device file.
+        * File size in bytes.
+        * Timestamps for last modification of metadata (i.e. for the inode 
+        itself), last modification of the file content and last access time 
+        (ctime, mtime & atime).
+        * Prefered I/O block size.
+        * The number of blocks allocated to this file.
+        * Direct, "singly", "doubly" and "triply" indirect pointers for data 
+        blocks.
+         
+
 * How to force/trigger a file system check on next reboot?
+
+    * `touch /forcefsck` will trigger a file system check on the next reboot 
+    for the root file system.
+    
+    * Observe that this mechanism is not necessary for non-root file systems 
+    as they can be dismounted to perform a file system check.
+    
+    
 * What is SNMP and what is it used for?
 * What is a runlevel and how to get the current runlevel?
 * What is SSH port forwarding?
