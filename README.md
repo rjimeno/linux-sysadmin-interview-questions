@@ -755,13 +755,88 @@ you remove the source to a symlink/hardlink?
     
     
 * What is SNMP and what is it used for?
+
+    * It is the Simple Network Management Protocol; an Internet Starndard, 
+    application-level protocol for managing network devices as well as 
+    collection and organizing information about a network and its components.
+
 * What is a runlevel and how to get the current runlevel?
+
+    * A runlevel is a mode of operation in Unix-like operating systems that 
+    implement a System V-style initialization. A runlevel can be thought as a
+     set of functionality that is enabled at a point in time for an operating
+      system (running) instance, or the state of a machine after boot. 
+      Usually, 7 runlevels existe with runlevel numbers 0 & 6 being a bit 
+      special in the representing halting and rebooting a system. Runlevel 1 
+    is often defined as having minimal capabilities and useful for a single 
+    user for maintenance or troubleshooting operations. Those are the 
+    standard runlevels. Additionally, runlevel 3 
+    includes fully operational network connectivity for multiple users and 
+    runlevel 5 has all the features of runlevel 3 plus a graphical user 
+    interface for computers capable of using X11. Runlevels vary 
+    significantly from with versions and vendors; even more the nonstandard 
+    (1 to 5) runlevels.
+    
+    * The current runlevel can be queried by running the command `runlevel`. 
+    The output includes the current runlevel. `runlevel` seem to be available
+     even on recent Linux distributions that are replacing the concept of 
+     runlevels and the init process by targets and systemd.
+
+
 * What is SSH port forwarding?
+
+    * SSH port forwarding is SSH tunneling. an SSH tunnel establishes a 
+    ciphered channel of communication between two ports of one or two 
+    networked servers. It is useful for securing communication that otherwise
+     would be send or received in-clear. TODO
+
+
 * What is the difference between local and remote port forwarding?
+
+    * TODO
+    
+    
 * What are the steps to add a user to a system without using useradd/adduser?
+
+    * As root:
+        * Create entries in /etc/passwd and /etc/shadow for the new user.
+            * You will probably need to use vipw to edit those files.
+            * To create the entries, a number of small decision like choosing
+             a correct UID and identifying if this user actually needs an 
+             interactive shell (maybe /usr/sbin/nologin is best).
+        * If the user will have a home directory, create it by copying 
+        /etc/skel/.
+        * If the user will need to authenticate to the system, assign a 
+        password for by invoking `passwd username`. Note that you might need 
+        a good way (secure and efficient) way to communicate the password to 
+        the new user.
+        
+        
 * What is MAJOR and MINOR numbers of special files?
+
+    * The files under /dev/ are not regular files. They represent devices and
+     some other things  - like a random number generator /dev/random, for 
+     example -  communicate with the kernel through a device driver.
+     
+     The specific device driver for each device is identified by a number, 
+     and that is the MAJOR number. Often times multiple devices are operated 
+     by the same device driver and the device driver needs a way to identify 
+     each one of the individual devices that share the same device driver. 
+     That number is the MINOR number.
+
+
 * Describe the mknod command and when you'd use it.
+
+    * Mknod can create the special (device) files described in the previous 
+    question.
+    
+
 * Describe a scenario when you get a "filesystem is full" error, but 'df' shows there is free space.
+
+    * When a very large number of (possibly very small) files have consumed 
+    all the inodes for that file system instance.
+    
+
 * Describe a scenario when deleting a file, but 'df' not showing the space being freed.
 * Describe how 'ps' works.
 * What happens to a child process that dies and has no parent process to wait for it and what’s bad about this?
