@@ -869,14 +869,92 @@ being freed.
     
 
 * Explain briefly each one of the process states.
+
+    * Running : The process is either running or it is ready to run .
+    * Waiting : The process is waiting for an event or for a resource.
+    * Stopped : The process has been stopped, usually by receiving a signal.
+    * Zombie : The process is dead but have not been removed from the process
+     table.
+    TODO: Improve on the above, possible with information from `man ps` as:
+                     D    uninterruptible sleep (usually IO)
+                     R    running or runnable (on run queue)
+                     S    interruptible sleep (waiting for an event to complete)
+                     T    stopped by job control signal
+                     t    stopped by debugger during the tracing
+                     W    paging (not valid since the 2.6.xx kernel)
+                     X    dead (should never be seen)
+                     Z    defunct ("zombie") process, terminated but not reaped by its parent
+
 * How to know which process listens on a specific port?
+
+    * For example, say we want to find out which process listens to port 80 
+    using protocol TCP. I would:
+    
+        * Preferably use `lsof -i TCP:80`
+        
+    Until recently, I'd have used `netstat -tulpn | grep tcp | grep :80`, but 
+    netstat is nnot installed by default on systems like RHEL 7 (and so, 
+    CentOS 7). I learned that linux also has `fuser 80/tcp`. 
+
+    
 * What is a zombie process and what could be the cause of it?
-* You run a bash script and you want to see its output on your terminal and save it to a file at the same time. How could you do it?
+
+    * It is a process that has diet but its parent process yas not yet called
+     wait() on it to collect the exit code left in the process table.
+     
+    * If the parent process is not written carefully, a bug may prevent it 
+    from calling wait() correctly.
+    
+    
+* You run a bash script and you want to see its output on your terminal and 
+save it to a file at the same time. How could you do it?
+
+    * `./bash_script | tee file_name`
+    
+    The above command will copy its standard input to its standard output and
+     to a file called 'file_name'.
+
+
 * Explain what echo "1" > /proc/sys/net/ipv4/ip_forward does.
-* Describe briefly the steps you need to take in order to create and install a valid certificate for the site https://foo.example.com.
+
+    * Would enable the IP Forwarding feature of the TCP/IP stack in the 
+    kernel. When Linux is used for routing or firewalling this feature should
+    be enabled.  
+
+
+* Describe briefly the steps you need to take in order to create and install 
+a valid certificate for the site https://foo.example.com.
+
+    * TODO
+
+
 * Can you have several HTTPS virtual hosts sharing the same IP?
+
+    * TODO
+    
+    
 * What is a wildcard certificate?
+
+    * TODO
+    
+    
 * Which Linux file types do you know?
+
+    This question is a bit ambiguous or unclear to me. I'm choosing to answer it
+    in the following way:
+    
+    * There are at least two groups of file types: Special files and regular
+    files. Here are the file types I know of:
+    
+        * Special files can be directories, links, pipes, sockets and device 
+        files (block and character). `find -type` can be useful on this regard
+        
+        * Regular files can have different formats: executable files in a 
+        binary format like a.out or ELF, executable shell commands text, PDF 
+        documents, PNG image data and more. The last two examples are 
+        non-executable. The `file` command can be useful on this regard.
+        
+        
 * What is the difference between a process and a thread? And parent and child processes after a fork system call?
 * What is the difference between exec and fork?
 * What is "nohup" used for?
