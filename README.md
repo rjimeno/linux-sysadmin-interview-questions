@@ -837,9 +837,37 @@ you remove the source to a symlink/hardlink?
     all the inodes for that file system instance.
     
 
-* Describe a scenario when deleting a file, but 'df' not showing the space being freed.
+* Describe a scenario when deleting a file, but 'df' not showing the space 
+being freed.
+
+    * Say a file is opened by a process and immediately deleted (or 
+    "unlinked"). Even though the link count in the inode is now zero and the 
+    file can't be reached from the file system hierarchy (i.e. it has been 
+    deleted for most purposes), the process still has a file descriptor open 
+    and pointing to the file. So, the space occupied by the file can't be 
+    released as available storage space until the file close() is called for 
+    the open descriptor.
+
+
 * Describe how 'ps' works.
-* What happens to a child process that dies and has no parent process to wait for it and what’s bad about this?
+
+    * On Linux, the /proc/ psudo-filesystem hierarchy contains extensive 
+    information on the system's processes. All the information required for 
+    `ps` is there although I, personally, do not know what exactly would need
+     to be checked and what can be ignored for `ps`. Also, I'm confident in 
+     thinking that there must be one or more libraries that simplify the 
+     querying of /proc/. `man 5 proc` is probably a great starting point.
+      
+
+* What happens to a child process that dies and has no parent process to wait
+ for it and what’s bad about this?
+ 
+    * If the parent process does not call wait(), the child stays in the 
+    zombie state ocupying an entry in the process table. If the number of 
+    zombie processes keeps increasing, the system runs out of PDIs (or 
+    entries in the process table) and becomes stalled.
+    
+
 * Explain briefly each one of the process states.
 * How to know which process listens on a specific port?
 * What is a zombie process and what could be the cause of it?
