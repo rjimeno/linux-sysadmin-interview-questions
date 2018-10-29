@@ -955,14 +955,60 @@ a valid certificate for the site https://foo.example.com.
         non-executable. The `file` command can be useful on this regard.
         
         
-* What is the difference between a process and a thread? And parent and child processes after a fork system call?
+* What is the difference between a process and a thread? And parent and child
+ processes after a fork system call?
+ 
+    * Processes have separate and independent memory. A single process can 
+    have multiple threads and those share memory between them. Besides that 
+    very important difference, processes and threads are quite similar in Linux.
+    
+
 * What is the difference between exec and fork?
+
+    * While exec() and fork() are often used together, they are quite 
+    different. exec() replaces the current process image with a new process 
+    image. fork() creates a new and exact copy of the current process. Often,
+     programs call fork() and determine if the current process is the parent 
+     or a child. Then, the child calls exec().
+
+
 * What is "nohup" used for?
+
+    * Sometimes we need to run a process that will take a long time to
+    finish. Long time in this case means longer than the session may last. 
+    Nohup "deattaches" from the session (or terminal) a process that runs in 
+    the background. The effective result of this is that the session can be 
+    closed and the program will continue running until it finishes its 
+    execution normally. Also, the output will be kept in a file (named
+    nohup.out by default) in case it needs to be checked at a later time.
+
+
+
 * What is the difference between these two commands?
  * ```myvar=hello```
  * ```export myvar=hello```
+ 
+    * Without `export`, only the current process will have that variable's 
+    value. If sub-shells (children processes, to be a bit more accurate) will
+     need the value, then the variable must be exported.
+     
+     
 * How many NTP servers would you configure in your local ntp.conf?
+
+    * Four is the recommended minimum.
+    
+    
 * What does the column 'reach' mean in ```ntpq -p``` output?
+
+    It represents the status of the last 8 NTP transactions between the NTP 
+    daemon and a given remote time server. Observe that that the number 
+    appears on base 8 (octal), which could be confusing. The right-most bit 
+    represents the most recent transaction and the left-most bit represents 
+    the oldest transaction that's tracked. Zero means failure vs one 
+    for success. 
+    
+    
+
 * You need to upgrade kernel at 100-1000 servers, how you would do this?
 * How can you get Host, Channel, ID, LUN of SCSI disk?
 * How can you limit process memory usage?
