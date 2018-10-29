@@ -1010,7 +1010,40 @@ a valid certificate for the site https://foo.example.com.
     
 
 * You need to upgrade kernel at 100-1000 servers, how you would do this?
+
+    * I'll divide the answer in two parts:
+    
+        * At the server level, the command(s) `yum -y update kernel & reboot`
+        must be executed by a user with root privileges. That can be achieved
+        by using a scheduled job (via cron or similar). Other option is to 
+        generate an SSH key pair on a "controller" server and install the 
+        public key on all of the 100-1000 other servers, then the 
+        controller server would be able run a simple script to read the host 
+        names from a file and execute the command remotely on all servers. 
+        Configuration management software like Ansible, Chef & Puppet may be 
+        able to achieve this too.
+        
+        * Above the server level there is the problem of coordinating the 
+        upgrades: In most cases, you rather not have all those servers 
+        upgrade their kernels and reboot at approximately the same time, but 
+        instead in piecemeal controlled groups. Another problem may be about 
+        wasting network bandwidth or time. Copying the relevant .rpm files to
+        a on-premises repository or shared disk are possible solutions.
+
+
 * How can you get Host, Channel, ID, LUN of SCSI disk?
+
+    * By visually inspecting (skimming & scanning) the output of the 
+    following 3 commands:
+    
+    `cat /proc/scsi/scsi` the 'Host' line or lines are the most relevant.
+    
+    `ls -ld /sys/block/sd*/device` should link to device files with names 
+    that end their names with the numbers for "host:channel:id:lun".
+    
+    `ls -la /dev/disk/by-id/` will point to actual ("short") device names.
+     
+    
 * How can you limit process memory usage?
 * What is bash quick substitution/caret replace(^x^y)?
 * Do you know of any alternative shells? If so, have you used any?
