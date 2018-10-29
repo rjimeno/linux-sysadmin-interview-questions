@@ -1045,13 +1045,86 @@ a valid certificate for the site https://foo.example.com.
      
     
 * How can you limit process memory usage?
+
+    * `ulimit -Sv` followed by the maximum number of KB that the future 
+    processes will be allowed to use.
+    
+
 * What is bash quick substitution/caret replace(^x^y)?
+
+    *It is a way to (almost) repeat the previous command replacing the first 
+    instance of the string 'x' by the string 'y'. Example
+    
+    ```
+    $ echo baz foo foo
+    baz foo foo
+    $ ^foo^bar
+     echo baz bar foo
+    baz bar foo
+    $
+    ```
+    
 * Do you know of any alternative shells? If so, have you used any?
-* What is a tarpipe (or, how would you go about copying everything, including hardlinks and special files, from one server to another)?
+
+    * I used csh a few years MANY years ago and I'm happier with Bash nowadays. 
+    There are many other shells like sh, ksh, tcsh, and more.
+    
+    
+* What is a tarpipe (or, how would you go about copying everything, including
+ hardlinks and special files, from one server to another)?
+
+    * Many years ago I had only one server with a tape device and so I used 
+    telnet, tar and pipes to initiate the creation of a backup that will be 
+    received by the server with tape capabilities and recorded there. I 
+    learned the trick from the book Unix Power Tools (probably first edition).
+    
+    *  A quick Google search showed ways to do similar things using ssh so a 
+    whole file system can be backed up to a remote host. Here's an example:
+    
+    `tar zcf - tobearchived | ssh user@destination_server_ip 'cat - > tobearchived.tar.gz'`
+ 
+    'tobearchived' represents a file or, more interestingly, hierarchy of 
+    files or full file system in a (origin) server. 'user' is not very 
+    relevant, but it is necessary while 'destination_server_ip' is the domain
+     name or IP address of the host that will receive the stream of data to 
+     be archived as a tape archive file.
+     
+ 
 * How can you tell if the httpd package was already installed?
+
+    * My preferred way is to try calling `apachectl`. It is probably better 
+    to query the package manager considering that the name of the package is 
+    varies between distributions and their versions. You will probably need 
+    to "grep" the output for 'http' or '[Aa]pache'.
+    
+    
 * How can you list the contents of a package?
-* How can you determine which package is better: openssh-server-5.3p1-118.1.el6_8.x86_64 or openssh-server-6.6p1-1.el6.x86_64 ?
-* Can you explain to me the difference between block based, and object based storage?
+
+    `rpm -ql <package_name>` if the package is installed. It is `rpm -qlf 
+    <package_file>` works if the package is not installed but its file is 
+    available in the local file system. Yum and apt-get can do similar things.
+    
+
+* How can you determine which package is better: openssh-server-5.3p1-118.1
+.el6_8.x86_64 or openssh-server-6.6p1-1.el6.x86_64 ?
+
+    * Generally, higher numbers towards the left represent are equivalent to 
+    more recent packages and so it may be OK to assume that openssh-server-6
+    .6p1-1.el6.x86_64 is better (Major version 6 as oposed to version 5).
+
+
+* Can you explain to me the difference between block based, and object based 
+storage?
+
+    * The following is an oversimplification:
+    
+        * Block based storage is fast and can have a file system on top. The 
+        way it works allow for a program to append one or more bytes at the 
+        end of a large file very quickly.
+        
+        * Object storage is comparatively slow. It is not possible to add a 
+        byte at the end of a file without retrieving the entirety of the file 
+        first.
 
 #### [[⬆]](#toc) <a name='hard'>Hard Linux Questions:</a>
 
@@ -1091,12 +1164,60 @@ a valid certificate for the site https://foo.example.com.
 #### [[⬆]](#toc) <a name='network'>Networking Questions:</a>
 
 * What is localhost and why would ```ping localhost``` fail?
-* What is the similarity between "ping" & "traceroute" ? How is traceroute able to find the hops.
-* What is the command used to show all open ports and/or socket connections on a machine?
+
+    * One possibility is: the local host interface (lo) is down. To fix that,
+     try: `ip link set lo up`.
+     
+    * Another posibility is: The TCP/IP stack is ignoring all ICMP Echo 
+    requests. To fix it, try: `echo "0" > 
+    /proc/sys/net/ipv4/icmp_echo_ignore_all`
+    
+* What is the similarity between "ping" & "traceroute" ? How is traceroute 
+able to find the hops.
+
+    * Both Ping and Traceroute utilities use ICMP for their purposes. 
+    Traceroute controls the Time To Live (TTL) or hop-pimit value in a ICMP 
+    datagram and looks for for time-exceeded-in-transit and 
+    destination-unreachable responses, to identify gateways on a path.
+    
+    * I vaguely remember that Traceroute also uses the "record route" feature
+     of IP to construct its response, but I can't recall enough details. 
+
+
+* What is the command used to show all open ports and/or socket connections 
+on a machine?
+
+    `netstat -tulpn` or equivalently `ss -lpn`.
+    
+
 * Is 300.168.0.123 a valid IPv4 address?
+
+    * No: The left-most number can't be represented by an 8-bit byte.
+
+
 * Which IP ranges/subnets are "private" or "non-routable" (RFC 1918)?
+
+    * 10.0.0.0 / 8 (i.e., to 10.255.255.255)
+    * 172.16.0.0 / 12 (i.e., to 172.31.255.255)
+    * 192.168.0.0 / 16 (i.e., to 192.168.255.255)
+    
+    
 * What is a VLAN?
+
+    * It is a Virtual Local Area Network. A VLAN grpups devices in a 
+    broadcast domain (logical grouping, that is; as opposed to physical 
+    grouping). VLANs can be used to improve congestion, scalability and 
+    security while simplifying network management and, to some extent, 
+    network architecture design.
+    
+
 * What is ARP and what is it used for?
+
+    Address Resolution Protocol. It is used to map or associate addresses in 
+    the Media Access Control (MAC) or Logical Link layer to IP addresses in 
+    the Network layer.
+    
+
 * What is the difference between TCP and UDP?
 * What is the purpose of a default gateway?
 * What is command used to show the routing table on a Linux box?
