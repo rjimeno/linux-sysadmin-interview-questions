@@ -1219,14 +1219,89 @@ on a machine?
     
 
 * What is the difference between TCP and UDP?
+
+    * UDP is a simple, high-speed, low-functionality protocol that interface
+    applications to the network layer. In contrast, TCP is a possibly slower,
+    fully-featured, reliable protocol that isolates applications from common 
+    problems at the network layer.
+    
+    * UDP is connection-less, while TCP is connection-oriented.
+    
+    * UDP is message-based while TCP is stream-based.
+    
+    * UDP is inreliable  while TCP is reliable.
+    
+    * UDP does not retransmit on its own while TCP takes care of 
+    retransmissions when needed.
+    
+    * UDP does not manage the flow of data while TCP uses sliding 
+    windows heuristics and congestion control avoidance algorithms.
+    
+    * UDP is very lean with a extremely low overhead. TCP is still lean with 
+    low overhead but not as much as UDP.
+    
+    * UDP has very high "raw" transmission speed. TCP uses its advanced 
+    features to provide hight transmission speed even under adverse 
+    circumstances.
+    
+    * UDP is ideal for small to moderate amounts of data while TCP scales 
+    efficiently up to very large amounts of data.
+
+
 * What is the purpose of a default gateway?
+
+    * Its purpose is to forward packets from a network when no other route 
+    matches.
+
+
 * What is command used to show the routing table on a Linux box?
-* A TCP connection on a network can be uniquely defined by 4 things. What are those things?
-* When a client running a web browser connects to a web server, what is the source port and what is the destination port of the connection?
+
+    `route` or `ip route`.
+
+
+* A TCP connection on a network can be uniquely defined by 4 things. What are
+ those things?
+
+    * Source address, source port, destination address, and destination port 
+    numbers.
+    
+
+* When a client running a web browser connects to a web server, what is the 
+source port and what is the destination port of the connection?
+
+    * Source port is unknown; it is an ephemeral port larger than 1023 
+    assigned arbitrarily. 
+    
+    * Destination port should be 80 although, in trying to be accurate, 80 is
+     the default port for a web server but its using a different port number 
+     would not prevent it from still being a web server.
+     
+
 * How do you add an IPv6 address to a specific interface?
-* You have added an IPv4 and IPv6 address to interface eth0. A ping to the v4 address is working but a ping to the v6 address gives you the response ```sendmsg: operation not permitted```. What could be wrong?
+
+    * `/sbin/ip -6 addr add <ipv6address>/<prefixlength> dev <interface>`
+
+
+* You have added an IPv4 and IPv6 address to interface eth0. A ping to the v4
+ address is working but a ping to the v6 address gives you the response
+ ```sendmsg: operation not permitted```. What could be wrong?
+
+    * The firewall is rejecting IPv6 traffic.
+    
+
 * What is SNAT and when should it be used?
-* Explain how could you ssh login into a Linux system that DROPs all new incoming packets using a SSH tunnel.
+
+    * It is Source Network Address Translation and it should be used when a 
+    node inside a private network needs to send data to a server outside the 
+    private network.
+    
+
+* Explain how could you ssh login into a Linux system that DROPs all new 
+incoming packets using a SSH tunnel.
+
+    * By using a reverse ssh tunnel.
+
+
 * How do you stop a DDoS attack?
 * How can you see content of an ip packet?
 * What is IPoAC (RFC 1149)?
