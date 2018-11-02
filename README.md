@@ -1303,9 +1303,33 @@ incoming packets using a SSH tunnel.
 
 
 * How do you stop a DDoS attack?
+
+    * Ask for help; particularly from your service providers.
+    
+    * Keep calm and maintain good record of the process.
+
+    * Unless your legitimate traffic actually generates from anywhere in the 
+    world at any time of the day, whitelist (or at least blacklist) the most
+    by geography.
+    
+    * Possibly change the configuration on your front-end web servers or 
+    perimeter network devices. For example, use more aggressive timeouts to 
+    reduce the effectiveness of TCP SYN Flood.
+    
+    
 * How can you see content of an ip packet?
+
+    Use Tcpdump (like `tcpdump -c 1 -i eth0`, for example). For non trivial 
+    cases, Wireshark (or both) may be a better option.
+    
+    
 * What is IPoAC (RFC 1149)?
+
+    :-p
+
 * What will happen when you bind port 0?
+
+    The TCP/IP stack will bind ot an ephimeral port instead.
 
 
 
@@ -1343,7 +1367,21 @@ incoming packets using a SSH tunnel.
 
 #### [[⬆]](#toc) <a name='fun'>Fun Questions:</a>
 
-* A careless sysadmin executes the following command: ```chmod 444 /bin/chmod ``` - what do you do to fix this?
+* A careless sysadmin executes the following command: `chmod 444 /bin/chmod` 
+- what do you do to fix this?
+ 
+    * Use a command similar to: `/lib64/ld-2.17.so /usr/bin/chmod a+x 
+    /usr/bin/chmod` where /lib64/ld-2.13.so is the interpreter for ELF files.
+    
+    * Other option is to create an empty executable file and then put the 
+    content of chmod inside the new file somewhat as follows:
+    ```
+    $ cp -p /usr/bin/cp tmp_chmod
+    $ cat /usr/bin/chmod > tmp_chmod
+    $ ./tmp_chmod a+x /usr/chbin/chmod
+    ```
+
+
 * I've lost my root password, what can I do?
 * I've rebooted a remote server but after 10 minutes I'm still not able to ssh into it, what can be wrong?
 * If you were stuck on a desert island with only 5 command-line utilities, which would you choose?
